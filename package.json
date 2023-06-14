@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@uniswap/core-next": "https://github.com/Uniswap/v4-core.git",
+    "ERADICATE2": "https://github.com/johguse/ERADICATE2.git"
+  },
+  "scripts": {
+    "postinstall": "cd ./node_modules/ERADICATE2/ && make && cd ../.."
+  }
+}
