@@ -1,9 +1,18 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
 
-import "forge-std/Script.sol";
-
+import {Script} from "forge-std/Script.sol";
 import {Hooks} from "@uniswap/core-next/contracts/libraries/Hooks.sol";
+
+import {Hook} from ../src/Hook.sol;
+
+contract StoreBytecode is Script {
+    function run() {
+        bytes memory _creationCode = type(Hook).creationCode;
+
+        // Store in bytecode
+    }
+}
 
 contract DeployHook is Script {
     // This should reuse the struct in the lib instead
@@ -16,16 +25,26 @@ contract DeployHook is Script {
     bool beforeDonate = true;
     bool afterDonate = true;
 
-    function setUp() public {}
+    IFactory factory;
+
+    bytes _creationCode = type(Hook).creationCode;
+
+    function setUp() public {
+        // read env for factory address
+
+        // read json for bytecode
+    }
 
     function run() public {
         vm.broadcast();
-        // Check if factory exists, if not deploy
-
-        // ffi to run eradicate2 -> should it be rather a yarn script (ie build, get the hash, check if factory exists -> deploy if needed, run eradicate2, deploy via factory)
+        // Compute theoric address
 
         // check the address has the corresponding hooks with lib hooks.validateHookAddress, if not, revert
 
         // call to factory to deploy hook
     }
+}
+
+contract DeployFactory is Script {
+
 }

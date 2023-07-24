@@ -4,6 +4,11 @@
     "ERADICATE2": "https://github.com/johguse/ERADICATE2.git"
   },
   "scripts": {
-    "postinstall": "cd ./node_modules/ERADICATE2/ && make && cd ../.."
+    "postinstall": "cd ./node_modules/ERADICATE2/ && make && cd ../..",
+    "build": "forge compile",
+    "deployFactory": "forge script DeployFactory",
+    "createSalt": "cd ./node_modules/ERADICATE2/ && ./ERADICATE2.x64 -i ../../bytecode --matching $FLAGS | grep -m 1 \"Salt:\" > ../../salt",
+    "deployHook": "forge script DeployHook",
+    "cleanUp": "rm ./salt ./bytecode"
   }
 }
